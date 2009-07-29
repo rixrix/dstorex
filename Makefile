@@ -20,4 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 	
+# Common prefix for installation directories.
+prefix = /usr/local
+exec_prefix = $(prefix)
+bindir = $(exec_prefix)/bin	
+
+# dstorex system path
+BINDIR_DSTOREX=$(exec_prefix)/bin
+
+install:
+	@echo "Installing dstorex"
+	
+	@echo "copying dstorex executable script"
+	@echo $(BINDIR_DSTOREX)
+	@cp dstorex $(BINDIR_DSTOREX)/;
+	@-chmod +x $(BINDIR_DSTOREX)/dstorex
+	@echo done.
+uninstall:
+	@echo Uninstalling dstorex
+	
+	@echo deleting $(BINDIR_DSTOREX)/dstorex
+	@if [ -e $(BINDIR_DSTOREX)/dstorex ]; then rm -fv $(BINDIR_DSTOREX)/dstorex; fi;
+	@echo done.	
 	

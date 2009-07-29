@@ -27,7 +27,7 @@
 #  
 # Last Updated : 28-July-2009 
 
-FIND_CMD=find
+FIND_CMD="find"
 FIND_SWITCHES="-type f -name .DS_Store -print0"
 XARGS="xargs -0 rm -fv"
 
@@ -37,11 +37,13 @@ if [ $# -lt 1 ]; then
 	exit 1
 fi
 
-DSTOREX="`$FIND_CMD $1 $FIND_SWITCHES | $XARGS`"
+DSTOREX="$FIND_CMD $1 $FIND_SWITCHES"
 
 # start removing .DS_Store files 
+echo "dstorex 1.0 by Richard Sentino"
+echo ""
 echo "removing .DS_Store file(s)..."
-$DSTOREX
+$DSTOREX | $XARGS
 echo "done."
 
 exit 0
